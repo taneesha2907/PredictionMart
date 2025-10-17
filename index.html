@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PredictionMart | Trade on the Future</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fafafa;
+      margin: 0;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #d63384, #ffb3c6);
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.8em;
+    }
+
+    header p {
+      font-size: 1.2em;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #d63384;
+    }
+
+    .widget {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    button {
+      background-color: #d63384;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #b52c6e;
+    }
+
+    .footer {
+      text-align: center;
+      background-color: #222;
+      color: white;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    iframe {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 300px;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      width: 80px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>PredictionMart</h1>
+    <p>Trade on the Future. Shape Tomorrow.</p>
+  </header>
+
+  <section>
+    <h2>Our Mission</h2>
+    <p>PredictionMart is a next-generation prediction market platform that lets you trade on real-world events — from tech launches to geopolitical outcomes. Our goal is to democratize forecasting, making market-based predictions transparent, data-driven, and accessible to everyone in Asia.</p>
+
+    <h2>Who We're For</h2>
+    <ul>
+      <li><strong>Curious Investors:</strong> People who want to turn insights into profits.</li>
+      <li><strong>Analysts & Researchers:</strong> Those who track trends in technology, economics, and global events.</li>
+      <li><strong>Students & Thinkers:</strong> Individuals eager to learn how collective intelligence drives markets.</li>
+    </ul>
+
+    <h2>What is a Prediction Market?</h2>
+    <p>In a prediction market, you can buy and sell “shares” tied to specific events. The price of a share reflects the market’s belief in the probability of that event happening.</p>
+    <p>For example, if “Will SpaceX land on Mars by 2030?” trades at $0.22, the market thinks there’s a 22% chance of it happening.</p>
+
+    <h2>How It Works</h2>
+    <ol>
+      <li><strong>Sign Up:</strong> Create your account and verify your identity.</li>
+      <li><strong>Deposit Funds:</strong> Add money to your wallet securely.</li>
+      <li><strong>Trade:</strong> Buy or sell “Yes” or “No” shares for future events.</li>
+      <li><strong>Settle:</strong> When outcomes are known, payouts are made automatically.</li>
+    </ol>
+
+    <h2>Example Transactions</h2>
+    <p><strong>Example 1:</strong> You buy 100 shares of “Will Apple release an AI iPhone by June 2025?” at $0.40 per share. If it happens, you earn $100 - $40 = $60 profit.</p>
+    <p><strong>Example 2:</strong> You sell “Yes” shares for “Will global temperatures exceed 1.5°C in 2024?” at $0.70. If it doesn’t happen, you keep the $0.70 per share as profit.</p>
+
+    <h2>Payoff Calculator</h2>
+    <div class="widget">
+      <p>Calculate your potential payoff based on share price and investment amount.</p>
+      <label>Share Price ($):</label>
+      <input type="number" id="price" step="0.01" min="0" max="1" value="0.50" />
+      <label>Investment ($):</label>
+      <input type="number" id="investment" step="1" min="1" value="100" />
+      <button onclick="calculatePayoff()">Calculate</button>
+      <p id="result"></p>
+    </div>
+
+    <h2>Prediction Market Explainer Video</h2>
+    <iframe width="560" height="315"
+      src="https://www.youtube.com/embed/xA27x7GRMZQ"
+      title="How Prediction Markets Work" 
+      allowfullscreen></iframe>
+
+    <h2>Our Launch Location</h2>
+    <p>PredictionMart is being launched from Hyderabad, India — a hub of innovation, fintech, and technology in Asia.</p>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.514545004528!2d78.47461937437345!3d17.38504470628016!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9752e6dff6d9%3A0x12a4277b9a9f9e1!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sin!4v1729156733102!5m2!1sen!2sin"
+      width="600"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"></iframe>
+  </section>
+
+  <div class="footer">
+    <p>&copy; 2025 PredictionMart. All rights reserved.</p>
+  </div>
+
+  <script>
+    function calculatePayoff() {
+      const price = parseFloat(document.getElementById('price').value);
+      const investment = parseFloat(document.getElementById('investment').value);
+      const shares = investment / price;
+      const payout = shares * 1.0;
+      const profit = payout - investment;
+      document.getElementById('result').innerText = `If correct: Payout = $${payout.toFixed(2)}, Profit = $${profit.toFixed(2)}`;
+    }
+  </script>
+</body>
+</html>
